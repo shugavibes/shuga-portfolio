@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 17, 17, 17;
+  --background-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-medium;
+    font-feature-settings: "liga" 1, "kern" 1, "dlig" 1;
+  }
+  
+  p {
+    font-feature-settings: "onum" 1, "pnum" 1, "kern" 1;
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-2xl font-medium mb-4;
+  }
+  
+  .section-content {
+    @apply space-y-4;
+  }
+  
+  .hover-link {
+    @apply text-gray-500 hover:text-gray-900 transition-colors;
+  }
+} 
