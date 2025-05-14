@@ -31,6 +31,7 @@ const ExperienceItem = ({
       <div>
         <h3 className="text-xl mb-1 group-hover:text-gray-900">{company}</h3>
         <p className="text-gray-500 text-lg group-hover:text-gray-600">{role}</p>
+        {company === "Atlas" && <p className="text-gray-400 text-base italic group-hover:text-gray-500">Previous: Product Designer & Manager</p>}
       </div>
       <span className="text-gray-400 text-base group-hover:text-gray-500">{period}</span>
     </div>
@@ -77,7 +78,7 @@ export default function Home() {
   const experiences = [
     {
       company: "Atlas",
-      role: "Product Leader",
+      role: "Head of Product",
       period: "2023 — Present"
     },
     {
@@ -92,7 +93,7 @@ export default function Home() {
     },
     {
       company: "Digital House (ex Acamica)",
-      role: "Product Manager&Designer",
+      role: "Product Manager & Designer",
       period: "2019-2021"
     },
     {
@@ -127,6 +128,16 @@ export default function Home() {
       title: "Featured appearance on the Olga streaming channel as Cupid on Valentine's Day",
       href: "https://www.youtube.com/watch?v=DSeO9Bgu3OQ&t=2398s",
       imageUrl: "/images/olga.jpg"
+    },
+    {
+      title: "Featured as a Top Writer in Leadership by Medium",
+      href: "https://www.linkedin.com/posts/alvarezquiros_estoy-muy-feliz-de-que-después-de-publicar-activity-6692088301165281280-fc1o/",
+      imageUrl: "/images/medium.png"
+    },
+    {
+      title: "Interviewed by La Voz del Interior as a leading voice in UX Design in Argentina",
+      href: "https://www.lavoz.com.ar/espacio-de-marca/disenar-experiencias-una-habilidad-cada-vez-mas-valorada/?utm_source=twitter&utm_medium=article&utm_campaign=social-network",
+      imageUrl: "/images/lavoz.png"
     },
     {
       title: "Part of the founding team of TEDxUniversidadCatolica in Córdoba",
@@ -259,7 +270,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="py-8">
-          <p className="text-gray-500 mb-4">Hey, let's get in touch and grab a coffee</p>
+          <p className="text-gray-500 mb-4">I vibe coded this thing.<br />Hey, let's get in touch and grab a coffee</p>
           <div className="flex space-x-4 items-center">
             <a 
               href="https://x.com/shuga_vibes" 
