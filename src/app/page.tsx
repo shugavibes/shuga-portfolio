@@ -110,6 +110,11 @@ export default function Home() {
 
   const portfolioItems = [
     {
+      title: "At Atlas, we hosted a keynote to introduce our new product, the Atlas Card, and I shared how the Atlas product ecosystem works.",
+      href: "https://www.youtube.com/watch?v=Nz91We6koEQ",
+      imageUrl: "/images/keynote.png"
+    },
+    {
       title: "Featured in 'The Book Of Design' by The Network & Framer, which highlighted profiles and works of 100 designers from Argentina.",
       href: "https://www.linkedin.com/posts/alvarezquiros_ayer-fue-el-lanzamiento-de-the-book-of-design-activity-7138276509231878146-Ijvu?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAeE3s0BJCA-k7VHUf1MDR3ic2_YYrTOntg",
       imageUrl: "/images/book.jpg"
