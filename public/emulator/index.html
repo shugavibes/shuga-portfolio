@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; background: #000008; overflow: hidden; }
+    #game { width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+  <div id="game"></div>
+  <script>
+    // Intercept XHR and post progress to parent (same-origin)
+    const _XHR = window.XMLHttpRequest;
+    window.XMLHttpRequest = function() {
+      const xhr = new _XHR();
+      const origOpen = xhr.open.bind(xhr);
+      xhr.open = function(method, url, ...rest) {
+        if (typeof url === 'string' && url.includes('/api/rom/')) {
+          xhr.addEventListener('progress', e => {
+            if (e.lengthComputable)
+              window.parent.postMessage({ type: 'rom-progress', value: (e.loaded / e.total) * 100 }, '*');
+          });
+          xhr.addEventListener('load', () =>
+            window.parent.postMessage({ type: 'rom-progress', value: 100 }, '*')
+          );
+        }
+        return origOpen(method, url, ...rest);
+      };
+      return xhr;
+    };
+    window.XMLHttpRequest.prototype = _XHR.prototype;
+
+    EJS_player        = '#game';
+    EJS_core          = 'pcsx_rearmed';
+    EJS_gameUrl       = '/api/rom/crash-bandicoot';
+    EJS_color         = '#2277ee';
+    EJS_startOnLoaded = true;
+    EJS_pathtodata    = 'https://cdn.emulatorjs.org/stable/data/';
+  </script>
+  <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+</body>
+</html>

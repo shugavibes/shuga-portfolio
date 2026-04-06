@@ -1,0 +1,71 @@
+/* PS2 Color System */
+:root {
+  --color-ps2-void: #000008;
+  --color-ps2-navy: #000b25;
+  --color-ps2-blue: #2277ee;
+  --color-ps2-cyan: #00cfff;
+  --color-ps2-gold: #c8a800;
+  --color-ps2-white: #dce8f8;
+  --color-ps2-ghost: #2a3a54;
+  --color-ps2-dim: #556688;
+}
+
+/* Scanlines */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.04) 3px,
+    rgba(0, 0, 0, 0.04) 4px
+  );
+}
+
+/* Vignette */
+.vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(0, 0, 8, 0.8) 100%
+  );
+}
+
+/* Dot glow */
+.dot-glow-active {
+  filter: drop-shadow(0 0 5px #a0ccff) drop-shadow(0 0 2px #ffffff);
+}
+
+.dot-glow-idle {
+  filter: drop-shadow(0 0 2px #2255aa);
+}
+
+/* Memory card icon glow */
+.mc-icon-selected {
+  filter:
+    drop-shadow(0 6px 12px rgba(180, 210, 255, 0.6))
+    drop-shadow(0 2px 6px rgba(255, 255, 255, 0.4));
+}
+
+/* Loading Screen */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #000008;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Scrollbar */
+.ps2-root ::-webkit-scrollbar { width: 4px; }
+.ps2-root ::-webkit-scrollbar-track { background: transparent; }
+.ps2-root ::-webkit-scrollbar-thumb { background: #2a3a54; border-radius: 2px; }

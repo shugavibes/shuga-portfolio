@@ -1,3 +1,6 @@
 {
-  "/page": "app/page.js"
+  "/_not-found": "app/_not-found.js",
+  "/page": "app/page.js",
+  "/ps2/page": "app/ps2/page.js",
+  "/api/rom/crash-bandicoot/route": "app/api/rom/crash-bandicoot/route.js"
 }
