@@ -44,8 +44,8 @@ body {
     position: fixed;
     bottom: 1.5rem;
     right: 1.5rem;
-    width: 64px;
-    height: 64px;
+    width: 49px;
+    height: 49px;
     border-radius: 50%;
     overflow: hidden;
     display: flex;
