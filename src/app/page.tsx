@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { PS2LaunchButton } from '@/components/PS2LaunchButton';
 
 const companyUrls = {
   "Atlas": "http://heyatlas.com/",
@@ -333,18 +333,7 @@ export default function Home() {
         </footer>
       </div>
       {/* Floating PS2 portfolio button */}
-      <Link
-        href="/ps2"
-        title="PS2 Portfolio"
-        className="ps2-fab"
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/crash-icon.png"
-          alt="PS2 Portfolio"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', imageRendering: 'pixelated' }}
-        />
-      </Link>
+      <PS2LaunchButton />
     </main>
   );
 } 
