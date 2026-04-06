@@ -118,14 +118,14 @@ export function ExperienceSection() {
     >
       <div className="flex gap-12 items-start">
         {/* Left: experience list */}
-        <div className="flex-shrink-0 border-b border-gray-100 mb-24" style={{ width: selected ? '42%' : '100%', transition: 'width 0.4s cubic-bezier(0.4,0,0.2,1)' }}>
+        <div className="flex-shrink-0" style={{ width: selected ? '42%' : '100%', transition: 'width 0.4s cubic-bezier(0.4,0,0.2,1)' }}>
           {experiences.map((exp, index) => {
             const isSelected = selected === exp.company;
             return (
               <button
                 key={exp.company}
                 onClick={() => toggle(exp.company)}
-                className={`w-full text-left group block py-8 ${index === 0 ? 'border-t border-gray-100' : ''} transition-all -mx-8 px-8 ${
+                className={`text-left group block py-8 ${index === 0 ? 'border-t border-gray-100' : ''} transition-all -mx-8 px-8 ${
                   isSelected
                     ? 'bg-blue-50 rounded-3xl'
                     : 'hover:bg-blue-50 hover:rounded-3xl'
@@ -210,6 +210,8 @@ export function ExperienceSection() {
           )}
         </AnimatePresence>
       </div>
+      {/* Full-width bottom divider matching the button border-t */}
+      <div className="border-b border-gray-100 -mx-8 mb-24" />
     </div>
   );
 }
