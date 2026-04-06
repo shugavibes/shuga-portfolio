@@ -111,6 +111,7 @@ export function ExperienceSection() {
   return (
     <motion.div
       className="mx-auto px-8"
+      initial={{ maxWidth: '42rem' }}
       animate={{ maxWidth: selected ? '64rem' : '42rem' }}
       transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
     >
@@ -151,48 +152,59 @@ export function ExperienceSection() {
           })}
         </div>
 
-        {/* Right: detail panel */}
+        {/* Right: detail panel — no key, stays mounted; only content fades on switch */}
         <AnimatePresence>
-          {detail && selected && (
+          {selected && (
             <motion.div
-              key={selected}
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 24 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
               className="flex-1 pt-8 min-w-0"
             >
-              <div className="flex items-start justify-between mb-1">
-                <h2 className="text-2xl text-gray-900">{selected}</h2>
-                <a
-                  href={companyUrls[selected]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-gray-500 transition-colors ml-4 mt-1 flex-shrink-0"
-                  aria-label={`Visit ${selected}`}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                    <polyline points="15 3 21 3 21 9" />
-                    <line x1="10" y1="14" x2="21" y2="3" />
-                  </svg>
-                </a>
-              </div>
-              <p className="text-gray-400 text-base mb-6">{detail.dates}</p>
+              <AnimatePresence mode="wait">
+                {detail && (
+                  <motion.div
+                    key={selected}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <div className="flex items-start justify-between mb-1">
+                      <h2 className="text-2xl text-gray-900">{selected}</h2>
+                      <a
+                        href={companyUrls[selected]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-300 hover:text-gray-500 transition-colors ml-4 mt-1 flex-shrink-0"
+                        aria-label={`Visit ${selected}`}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                      </a>
+                    </div>
+                    <p className="text-gray-400 text-base mb-6">{detail.dates}</p>
 
-              <ul className="space-y-3 mb-8">
-                {detail.bullets.map((b, i) => (
-                  <li key={i} className="flex gap-3 text-gray-600 text-base leading-relaxed">
-                    <span className="text-gray-300 mt-1 flex-shrink-0">—</span>
-                    {b}
-                  </li>
-                ))}
-              </ul>
+                    <ul className="space-y-3 mb-8">
+                      {detail.bullets.map((b, i) => (
+                        <li key={i} className="flex gap-3 text-gray-600 text-base leading-relaxed">
+                          <span className="text-gray-300 mt-1 flex-shrink-0">—</span>
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
 
-              <p className="text-gray-400 text-base italic leading-relaxed border-t border-gray-100 pt-6">
-                {detail.description}
-              </p>
+                    <p className="text-gray-400 text-base italic leading-relaxed border-t border-gray-100 pt-6">
+                      {detail.description}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           )}
         </AnimatePresence>
