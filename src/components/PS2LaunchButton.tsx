@@ -1,29 +1,61 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    YT: any;
+    onYouTubeIframeAPIReady: () => void;
+  }
+}
 
 export function PS2LaunchButton() {
   const [showIntro, setShowIntro] = useState(false);
   const router = useRouter();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const playerRef = useRef<any>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!showIntro) return;
 
-    const handleMessage = (e: MessageEvent) => {
-      if (typeof e.data !== 'string') return;
-      try {
-        const data = JSON.parse(e.data);
-        if (data.event === 'infoDelivery' && data.info?.playerState === 0) {
-          router.push('/ps2');
-        }
-      } catch {
-        // ignore non-JSON messages
-      }
+    const initPlayer = () => {
+      if (!containerRef.current) return;
+      playerRef.current = new window.YT.Player(containerRef.current, {
+        videoId: 'y9Ln-qyvX_I',
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          rel: 0,
+          modestbranding: 1,
+          fs: 0,
+        },
+        events: {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          onStateChange: (e: any) => {
+            if (e.data === 0) router.push('/ps2'); // 0 = ended
+          },
+        },
+      });
     };
 
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
+    if (window.YT?.Player) {
+      initPlayer();
+    } else {
+      window.onYouTubeIframeAPIReady = initPlayer;
+      if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+        const script = document.createElement('script');
+        script.src = 'https://www.youtube.com/iframe_api';
+        document.head.appendChild(script);
+      }
+    }
+
+    return () => {
+      playerRef.current?.destroy();
+      playerRef.current = null;
+    };
   }, [showIntro, router]);
 
   return (
@@ -43,20 +75,8 @@ export function PS2LaunchButton() {
       </button>
 
       {showIntro && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: '#000008',
-            zIndex: 9999,
-          }}
-        >
-          <iframe
-            src="https://www.youtube.com/embed/y9Ln-qyvX_I?autoplay=1&controls=0&enablejsapi=1&rel=0&modestbranding=1"
-            allow="autoplay; fullscreen"
-            style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
-            title="PS2 Startup"
-          />
+        <div style={{ position: 'fixed', inset: 0, background: '#000008', zIndex: 9999 }}>
+          <div ref={containerRef} style={{ width: '100%', height: '100%' }} />
         </div>
       )}
     </>
