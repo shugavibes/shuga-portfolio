@@ -43,6 +43,16 @@ export default function Home() {
 
   const portfolioItems = [
     {
+      title: "Speaker at AI Day at Aleph",
+      href: "https://x.com/shuga_vibes/status/2034720873278492890",
+      imageUrl: "/images/aleph.jpg"
+    },
+    {
+      title: "Built an AI assistant template for Product Managers that runs on autopilot — open-sourced for anyone to install and customize",
+      href: "https://x.com/shuga_vibes/status/2038741088110887201",
+      imageUrl: "/images/agent-dashboard.png"
+    },
+    {
       title: "At Atlas, we hosted a keynote to introduce our new product, the Atlas Card, and I shared how the Atlas product ecosystem works.",
       href: "https://www.youtube.com/watch?v=Nz91We6koEQ",
       imageUrl: "/images/keynote.png"
