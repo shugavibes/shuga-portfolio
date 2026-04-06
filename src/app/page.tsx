@@ -218,7 +218,7 @@ export default function Home() {
                 title={item.title}
                 href={item.href}
                 imageUrl={item.imageUrl}
-                isFirst={index === 0 || index === 1}
+                isFirst={index === 0 || index === 1 || index === 2}
               />
             ))}
           </div>
