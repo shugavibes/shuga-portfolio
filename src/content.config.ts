@@ -218,7 +218,8 @@ export const content: SiteContent = {
 
   connect: [
     { id: 'linkedin', label: 'LinkedIn', url: 'https://linkedin.com/in/alvarezquiros' },
-    { id: 'x', label: 'X / Twitter', url: 'https://x.com' },
-    { id: 'instagram', label: 'Instagram', url: 'https://instagram.com' },
+    { id: 'x', label: 'X / Twitter', url: 'https://x.com/shuga_vibes' },
+    { id: 'instagram', label: 'Instagram', url: 'https://instagram.com/shuga.vibes' },
+    { id: 'github', label: 'GitHub', url: 'https://github.com/shugavibes' },
   ],
 };
