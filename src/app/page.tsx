@@ -3,7 +3,8 @@ import Image from 'next/image';
 import { PS2LaunchButton } from '@/components/PS2LaunchButton';
 
 const companyUrls = {
-  "Atlas": "http://heyatlas.com/",
+  "Remote": "https://remote.com",
+  "Atlas (acq. by Remote)": "http://heyatlas.com/",
   "Lemon": "https://lemon.me",
   "Aivo": "https://aivo.co",
   "Digital House (ex Acamica)": "https://www.digitalhouse.com/ar",
@@ -32,7 +33,8 @@ const ExperienceItem = ({
       <div>
         <h3 className="text-xl mb-1 group-hover:text-gray-900">{company}</h3>
         <p className="text-gray-500 text-lg group-hover:text-gray-600">{role}</p>
-        {company === "Atlas" && <p className="text-gray-400 text-base italic group-hover:text-gray-500">Previous: Product Designer & Manager</p>}
+        {company === "Atlas (acq. by Remote)" && <p className="text-gray-400 text-base italic group-hover:text-gray-500">Previously: Product Designer & Manager</p>}
+        {company === "Remote" && <p className="text-gray-400 text-base italic group-hover:text-gray-500">Joined via Atlas acquisition</p>}
       </div>
       <span className="text-gray-400 text-base group-hover:text-gray-500">{period}</span>
     </div>
@@ -78,9 +80,14 @@ const PortfolioItem = ({
 export default function Home() {
   const experiences = [
     {
-      company: "Atlas",
+      company: "Remote",
+      role: "Product Lead, Cards",
+      period: "2026 — Present"
+    },
+    {
+      company: "Atlas (acq. by Remote)",
       role: "Head of Product",
-      period: "2023 — Present"
+      period: "2023 — 2026"
     },
     {
       company: "Lemon",
@@ -276,7 +283,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="py-8">
-          <p className="text-gray-500 mb-4">I vibe coded this thing.<br />Hey, let's get in touch and grab a coffee</p>
+          <p className="text-gray-500 mb-4">Hey, let's get in touch and grab a coffee</p>
           <div className="flex space-x-4 items-center">
             <a 
               href="https://x.com/shuga_vibes" 
