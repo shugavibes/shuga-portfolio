@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/Users/nico.alvarezquiros/shuga-portfolio/src/app/layout":["static/media/e4af272ccee01ff0-s.p.woff2"],"/Users/nico.alvarezquiros/shuga-portfolio/src/app/ps2/layout":["static/media/78fec81b34c4a365.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';
