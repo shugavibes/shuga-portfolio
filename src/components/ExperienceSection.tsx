@@ -109,11 +109,12 @@ export function ExperienceSection() {
   const detail = selected ? details[selected] : null;
 
   return (
-    <motion.div
+    <div
       className="mx-auto px-8"
-      initial={{ maxWidth: '42rem' }}
-      animate={{ maxWidth: selected ? '64rem' : '42rem' }}
-      transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+      style={{
+        maxWidth: selected ? '64rem' : '42rem',
+        transition: 'max-width 0.4s cubic-bezier(0.4,0,0.2,1)',
+      }}
     >
       <div className="flex gap-12 items-start">
         {/* Left: experience list */}
@@ -209,6 +210,6 @@ export function ExperienceSection() {
           )}
         </AnimatePresence>
       </div>
-    </motion.div>
+    </div>
   );
 }
