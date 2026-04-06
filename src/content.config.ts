@@ -134,10 +134,28 @@ export const content: SiteContent = {
 
   ideas: [
     {
-      id: 'placeholder-1',
-      title: 'Coming soon',
-      description: 'Writing in progress',
-      url: 'https://linkedin.com/in/alvarezquiros',
+      id: 'multi-agent-pm',
+      title: 'Multi Agent PM assistant',
+      description: '',
+      url: 'https://x.com/shuga_vibes/status/2038741088110887201',
+    },
+    {
+      id: 'leapfrogging',
+      title: 'The year of Leapfrogging',
+      description: '',
+      url: 'https://x.com/shuga_vibes/status/2036812209506976026',
+    },
+    {
+      id: 'vibechex',
+      title: 'Vibechex',
+      description: '',
+      url: 'https://x.com/shuga_vibes/status/2032087065995755543',
+    },
+    {
+      id: '99-percent',
+      title: '99% is closest to 0',
+      description: '',
+      url: 'https://x.com/compose/articles/edit/2023404784297140224',
     },
   ],
 
