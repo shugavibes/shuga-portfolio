@@ -10,6 +10,7 @@
 //     Inactive items — smaller, dim gray, stacked below.
 //   Bottom: button hints (× Enter | △ Version).
 
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DotClusterIcon } from '@/components/ui/DotClusterIcon';
 import { playHover, playSelect } from '@/hooks/useAudio';
@@ -125,6 +126,41 @@ export function MenuView({ focusedMenu, onFocus, onEnter }: MenuViewProps) {
           })}
         </div>
       </div>
+
+      {/* Back to main portfolio — floating avatar button */}
+      <Link
+        href="/"
+        title="Back to portfolio"
+        style={{
+          position: 'absolute',
+          bottom: '1.5rem',
+          right: '1.5rem',
+          width: 49,
+          height: 49,
+          borderRadius: '50%',
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#111',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+          transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+          zIndex: 50,
+        }}
+        onMouseEnter={e => {
+          (e.currentTarget as HTMLElement).style.transform = 'scale(1.12)';
+        }}
+        onMouseLeave={e => {
+          (e.currentTarget as HTMLElement).style.transform = 'scale(1)';
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/pixel-avatar.webp"
+          alt="Back to portfolio"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', imageRendering: 'pixelated' }}
+        />
+      </Link>
 
       {/* Bottom button hints — PS2 style */}
       <div
