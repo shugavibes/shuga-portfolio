@@ -1,45 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { PS2LaunchButton } from '@/components/PS2LaunchButton';
-
-const companyUrls = {
-  "Remote": "https://remote.com",
-  "Atlas (acq. by Remote)": "http://heyatlas.com/",
-  "Lemon": "https://lemon.me",
-  "Aivo": "https://aivo.co",
-  "Digital House (ex Acamica)": "https://www.digitalhouse.com/ar",
-  "Naranja": "https://www.naranja.com",
-  "Mercado Libre & Mercado Pago": "https://www.mercadolibre.com"
-};
-
-const ExperienceItem = ({ 
-  company, 
-  role, 
-  period,
-  isFirst 
-}: { 
-  company: string; 
-  role: string; 
-  period: string;
-  isFirst?: boolean;
-}) => (
-  <a 
-    href={companyUrls[company]}
-    className={`group block py-8 ${isFirst ? 'border-t border-gray-100' : ''} hover:bg-blue-50 hover:rounded-3xl transition-all -mx-8 px-8`}
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <div className="flex justify-between items-start">
-      <div>
-        <h3 className="text-xl mb-1 group-hover:text-gray-900">{company}</h3>
-        <p className="text-gray-500 text-lg group-hover:text-gray-600">{role}</p>
-        {company === "Atlas (acq. by Remote)" && <p className="text-gray-400 text-base italic group-hover:text-gray-500">Previously: Product Designer & Manager</p>}
-        {company === "Remote" && <p className="text-gray-400 text-base italic group-hover:text-gray-500">Joined via Atlas acquisition</p>}
-      </div>
-      <span className="text-gray-400 text-base group-hover:text-gray-500">{period}</span>
-    </div>
-  </a>
-);
+import { ExperienceSection } from '@/components/ExperienceSection';
 
 const PortfolioItem = ({
   title,
@@ -78,43 +40,6 @@ const PortfolioItem = ({
 };
 
 export default function Home() {
-  const experiences = [
-    {
-      company: "Remote",
-      role: "Product Lead, Cards",
-      period: "2026 — Present"
-    },
-    {
-      company: "Atlas (acq. by Remote)",
-      role: "Head of Product",
-      period: "2023 — 2026"
-    },
-    {
-      company: "Lemon",
-      role: "Product Designer",
-      period: "2022"
-    },
-    {
-      company: "Aivo",
-      role: "Product Designer",
-      period: "2021"
-    },
-    {
-      company: "Digital House (ex Acamica)",
-      role: "Product Manager & Designer",
-      period: "2019-2021"
-    },
-    {
-      company: "Naranja",
-      role: "Product Designer & Researcher",
-      period: "2018-2019"
-    },
-    {
-      company: "Mercado Libre & Mercado Pago",
-      role: "Product Designer",
-      period: "2016-2018"
-    }
-  ];
 
   const portfolioItems = [
     {
@@ -245,26 +170,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Introduction and Experience Section */}
-        <section>
-          <div className="mb-12">
-            <p className="text-2xl text-gray-900">Product leader from Argentina.</p>
-            <p className="text-2xl text-gray-400">I build things and solve problems.</p>
-          </div>
+        {/* Intro text */}
+        <div className="mb-12">
+          <p className="text-2xl text-gray-900">Product leader from Argentina.</p>
+          <p className="text-2xl text-gray-400">I build things and solve problems.</p>
+        </div>
+      </div>
 
-          <div className="border-b border-gray-100 mb-24">
-            {experiences.map((exp, index) => (
-              <ExperienceItem
-                key={index}
-                company={exp.company}
-                role={exp.role}
-                period={exp.period}
-                isFirst={index === 0}
-              />
-            ))}
-          </div>
-        </section>
+      {/* Experience — breaks out of max-w-2xl to expand on selection */}
+      <ExperienceSection />
 
+      <div className="max-w-2xl mx-auto px-8">
         {/* Portfolio Categories */}
         <section className="mb-24">
           <h2 className="text-3xl mb-6">Random cool things</h2>
