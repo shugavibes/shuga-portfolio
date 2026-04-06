@@ -110,9 +110,9 @@ export function ExperienceSection() {
 
   return (
     <div
-      className="mx-auto px-8"
+      className="max-w-2xl mx-auto px-8"
       style={{
-        maxWidth: selected ? '64rem' : '42rem',
+        maxWidth: selected ? '64rem' : undefined,
         transition: 'max-width 0.4s cubic-bezier(0.4,0,0.2,1)',
       }}
     >
