@@ -24,6 +24,7 @@ export interface MiscEntry {
   id: string;
   text: string;
   icon: MiscIcon;
+  url?: string;
 }
 
 export interface ConnectEntry {

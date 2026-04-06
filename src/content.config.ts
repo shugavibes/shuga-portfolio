@@ -143,9 +143,76 @@ export const content: SiteContent = {
 
   misc: [
     {
-      id: 'placeholder-1',
-      text: 'More coming soon',
+      id: 'aleph',
+      text: 'Speaker at AI Day at Aleph',
+      icon: '★',
+      url: 'https://x.com/shuga_vibes/status/2034720873278492890',
+    },
+    {
+      id: 'agent-template',
+      text: 'Built an AI assistant template for Product Managers that runs on autopilot — open-sourced for anyone to install and customize',
+      icon: '★',
+      url: 'https://x.com/shuga_vibes/status/2038741088110887201',
+    },
+    {
+      id: 'atlas-keynote',
+      text: 'At Atlas, we hosted a keynote to introduce our new product, the Atlas Card, and I shared how the Atlas product ecosystem works.',
+      icon: '♦',
+      url: 'https://www.youtube.com/watch?v=Nz91We6koEQ',
+    },
+    {
+      id: 'book-of-design',
+      text: "Featured in 'The Book Of Design' by The Network & Framer, which highlighted profiles and works of 100 designers from Argentina.",
+      icon: '♦',
+      url: 'https://www.linkedin.com/posts/alvarezquiros_ayer-fue-el-lanzamiento-de-the-book-of-design-activity-7138276509231878146-Ijvu',
+    },
+    {
+      id: 'mercado-credito',
+      text: 'Part of the initial team and first designer of Mercado Crédito at Mercado Libre',
+      icon: '★',
+      url: 'https://www.mercadopago.com.ar/creditos/comprar-cuotas-sin-tarjeta',
+    },
+    {
+      id: 'gaid',
+      text: 'Part of the Founding team behind GAID at the ShipBA hackathon',
+      icon: '♦',
+      url: 'https://www.linkedin.com/posts/alvarezquiros_gaid-encuentra-tu-experiencia-perfecta-activity-7304954848699990016-rEY4',
+    },
+    {
+      id: 'olga',
+      text: 'Featured appearance on the Olga streaming channel as Cupid on Valentine\'s Day',
       icon: '●',
+      url: 'https://www.youtube.com/watch?v=DSeO9Bgu3OQ&t=2398s',
+    },
+    {
+      id: 'medium',
+      text: 'Featured as a Top Writer in Leadership by Medium',
+      icon: '♦',
+      url: 'https://www.linkedin.com/posts/alvarezquiros_estoy-muy-feliz-de-que-después-de-publicar-activity-6692088301165281280-fc1o/',
+    },
+    {
+      id: 'lavoz',
+      text: 'Interviewed by La Voz del Interior as a leading voice in UX Design in Argentina',
+      icon: '♦',
+      url: 'https://www.lavoz.com.ar/espacio-de-marca/disenar-experiencias-una-habilidad-cada-vez-mas-valorada/',
+    },
+    {
+      id: 'tedx',
+      text: 'Part of the founding team of TEDxUniversidadCatolica in Córdoba',
+      icon: '●',
+      url: 'https://www.ted.com/tedx/events/16368',
+    },
+    {
+      id: 'oajnu',
+      text: '10 years as a volunteer at the Argentine Youth Organization for the United Nations',
+      icon: '●',
+      url: 'https://oajnu.org',
+    },
+    {
+      id: 'startup-weekend',
+      text: 'Second place at Startup Weekend Córdoba',
+      icon: '●',
+      url: 'https://www.cadena3.com/noticia/tecnologia/mas-inclusion-gano-el-startup-weekend-cordoba_154535',
     },
   ],
 

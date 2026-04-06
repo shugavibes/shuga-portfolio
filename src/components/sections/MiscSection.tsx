@@ -53,6 +53,7 @@ export function MiscSection() {
           title={item.text}
           description=""
           icon={item.icon}
+          url={item.url}
           accentColor={ICON_COLORS[item.icon] ?? '#2277ee'}
         />
       ))}
