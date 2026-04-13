@@ -200,7 +200,7 @@ export default function Home() {
         {/* Intro text */}
         <div className="mb-12">
           <p className="text-2xl text-gray-900">Product leader from Argentina.</p>
-          <p className="text-2xl text-gray-400">I build things and solve problems.</p>
+          <p className="text-2xl text-gray-400">10 years building technology products for humans. Now also for agents.</p>
         </div>
       </div>
 
