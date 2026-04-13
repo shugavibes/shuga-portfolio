@@ -89,6 +89,7 @@ const details: Record<string, { dates: string; bullets: string[]; description: s
     ],
     description:
       "MercadoLibre at scale is a different kind of design challenge. The goal wasn't beautiful interfaces — it was getting credit to people who had never had a bank account.",
+    images: ['/images/ml-mpmerchant.png', '/images/ml-mpuser.png'],
   },
 };
 
