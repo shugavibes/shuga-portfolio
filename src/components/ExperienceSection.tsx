@@ -204,7 +204,7 @@ export function ExperienceSection() {
                     {detail.images && (
                       <div className="flex flex-col gap-4 mb-8">
                         {detail.images.map((src, i) => (
-                          <div key={i} className="rounded-2xl overflow-hidden bg-gray-50">
+                          <div key={i} className="rounded-2xl overflow-hidden bg-gray-50" style={{ width: i === 1 ? '50%' : '100%' }}>
                             <img src={src} alt="" className="w-full object-cover" />
                           </div>
                         ))}
