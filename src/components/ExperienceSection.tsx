@@ -195,7 +195,7 @@ export function ExperienceSection() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 24 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="flex-1 pt-8 pr-8 min-w-0"
+              className="flex-1 pt-8 pr-8 pb-24 min-w-0"
             >
               <AnimatePresence mode="wait">
                 {detail && (
