@@ -137,7 +137,6 @@ export function ExperienceSection() {
       )}
     </AnimatePresence>
     <div
-    <div
       className="max-w-2xl mx-auto"
       style={{
         maxWidth: selected ? '64rem' : undefined,
