@@ -13,7 +13,7 @@ const companyUrls: Record<string, string> = {
   'Mercado Libre & Mercado Pago': 'https://www.mercadolibre.com',
 };
 
-const details: Record<string, { dates: string; bullets: string[]; description: string }> = {
+const details: Record<string, { dates: string; bullets: string[]; description: string; images?: string[] }> = {
   'Remote': {
     dates: 'Jan 2026 – present',
     bullets: [
@@ -33,6 +33,7 @@ const details: Record<string, { dates: string; bullets: string[]; description: s
       'Atlas was acquired for its Cards product — the entire team joined Remote',
       'Previously Product Designer: built and scaled the benefits & perks marketplace',
     ],
+    images: ['/images/atlas-cardsphone.png', '/images/atlas-cardsweb.png'],
     description:
       'Nearly 3 years at Atlas — from Product Designer to Head of Product. The card-led pivot led to the acquisition by Remote, with the full team and product carrying over.',
   },
@@ -199,6 +200,16 @@ export function ExperienceSection() {
                         </li>
                       ))}
                     </ul>
+
+                    {detail.images && (
+                      <div className="flex gap-4 mb-8">
+                        {detail.images.map((src, i) => (
+                          <div key={i} className="flex-1 rounded-2xl overflow-hidden bg-gray-50">
+                            <img src={src} alt="" className="w-full h-full object-cover" />
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
                     <p className="text-gray-400 text-base italic leading-relaxed border-t border-gray-100 pt-6">
                       {detail.description}
