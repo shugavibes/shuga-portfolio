@@ -13,7 +13,8 @@ const companyUrls: Record<string, string> = {
   'Mercado Libre & Mercado Pago': 'https://www.mercadolibre.com',
 };
 
-const details: Record<string, { dates: string; bullets: string[]; description: string; images?: string[]; videoUrl?: string }> = {
+type Bullet = string | { text: string; url: string };
+const details: Record<string, { dates: string; bullets: Bullet[]; description: string; images?: string[]; videoUrl?: string }> = {
   'Remote': {
     dates: 'Jan 2026 – present',
     bullets: [
@@ -56,6 +57,7 @@ const details: Record<string, { dates: string; bullets: string[]; description: s
       'Scaled and structured the Design Team',
       'Explored generative AI for customer responses before it was mainstream',
       'CSAT increased by 35% in the first week after implementing the chat window redesigns',
+      { text: 'See full case: Chatbot Window Redesign — High Impact at a Low Cost', url: 'https://shuga.medium.com/case-study-chatbot-window-redesign-high-impact-at-a-low-cost-5645eaf5dac7' },
     ],
     description:
       'Rebuilding the full product suite while also building the team. The generative AI exploration felt early and uncertain at the time — turns out it was just early.',
@@ -225,7 +227,11 @@ export function ExperienceSection() {
                       {detail.bullets.map((b, i) => (
                         <li key={i} className="flex gap-3 text-gray-600 text-base leading-relaxed">
                           <span className="text-gray-300 mt-1 flex-shrink-0">—</span>
-                          {b}
+                          {typeof b === 'string' ? b : (
+                            <a href={b.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 underline underline-offset-2">
+                              {b.text}
+                            </a>
+                          )}
                         </li>
                       ))}
                     </ul>
