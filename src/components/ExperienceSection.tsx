@@ -80,6 +80,7 @@ const details: Record<string, { dates: string; bullets: Bullet[]; description: s
       'Product Designer for the Payments unit',
       'Researched Argentine user profiles and their payment contexts',
       'Contributed to an omnichannel digital payments strategy',
+      { text: 'Naranja Credit Card: Partial Payments', url: 'https://shuga.medium.com/case-study-partial-payments-naranja-7b2b928ec854' },
     ],
     description:
       "Naranja is one of Argentina's biggest fintechs. Working on payments there meant understanding a huge range of users — many of whom had never used a digital product before.",
