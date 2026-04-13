@@ -104,6 +104,7 @@ const experiences = [
 
 export function ExperienceSection() {
   const [selected, setSelected] = useState<string | null>(null);
+  const [lightbox, setLightbox] = useState<string | null>(null);
 
   const toggle = (company: string) =>
     setSelected((prev) => (prev === company ? null : company));
@@ -111,6 +112,31 @@ export function ExperienceSection() {
   const detail = selected ? details[selected] : null;
 
   return (
+    <>
+    <AnimatePresence>
+      {lightbox && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          onClick={() => setLightbox(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 cursor-zoom-out p-8"
+        >
+          <motion.img
+            src={lightbox}
+            alt=""
+            initial={{ scale: 0.92, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.92, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="max-w-full max-h-full object-contain rounded-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
+    <div
     <div
       className="max-w-2xl mx-auto"
       style={{
@@ -205,7 +231,11 @@ export function ExperienceSection() {
                     {detail.images && (
                       <div className="flex flex-col gap-4 mb-8">
                         {detail.images.map((src, i) => (
-                          <div key={i} className="rounded-2xl overflow-hidden bg-gray-50">
+                          <div
+                            key={i}
+                            className="rounded-2xl overflow-hidden bg-gray-50 cursor-zoom-in"
+                            onClick={() => setLightbox(src)}
+                          >
                             <img src={src} alt="" className="w-full object-cover" />
                           </div>
                         ))}
@@ -223,5 +253,6 @@ export function ExperienceSection() {
         </AnimatePresence>
       </div>
     </div>
+    </>
   );
 }
