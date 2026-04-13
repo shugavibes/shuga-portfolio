@@ -227,8 +227,12 @@ export function ExperienceSection() {
                       ))}
                     </ul>
 
+                    <p className="text-gray-400 text-base italic leading-relaxed border-t border-gray-100 pt-6 mb-8">
+                      {detail.description}
+                    </p>
+
                     {detail.images && (
-                      <div className="flex flex-col gap-4 mb-8">
+                      <div className="flex flex-col gap-4">
                         {detail.images.map((src, i) => (
                           <div
                             key={i}
@@ -240,10 +244,6 @@ export function ExperienceSection() {
                         ))}
                       </div>
                     )}
-
-                    <p className="text-gray-400 text-base italic leading-relaxed border-t border-gray-100 pt-6">
-                      {detail.description}
-                    </p>
                   </motion.div>
                 )}
               </AnimatePresence>
