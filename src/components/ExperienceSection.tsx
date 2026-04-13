@@ -33,7 +33,7 @@ const details: Record<string, { dates: string; bullets: string[]; description: s
       'Atlas was acquired for its Cards product — the entire team joined Remote',
       'Previously Product Designer: built and scaled the benefits & perks marketplace',
     ],
-    images: ['/images/atlas-cardsphone.png', '/images/atlas-cardsweb.png'],
+    images: ['/images/atlas-cardsweb.png', '/images/atlas-cardsphone.png'],
     description:
       'Nearly 3 years at Atlas — from Product Designer to Head of Product. The card-led pivot led to the acquisition by Remote, with the full team and product carrying over.',
   },
@@ -202,10 +202,10 @@ export function ExperienceSection() {
                     </ul>
 
                     {detail.images && (
-                      <div className="flex gap-4 mb-8">
+                      <div className="flex flex-col gap-4 mb-8">
                         {detail.images.map((src, i) => (
-                          <div key={i} className="flex-1 rounded-2xl overflow-hidden bg-gray-50">
-                            <img src={src} alt="" className="w-full h-full object-cover" />
+                          <div key={i} className="rounded-2xl overflow-hidden bg-gray-50">
+                            <img src={src} alt="" className="w-full object-cover" />
                           </div>
                         ))}
                       </div>
