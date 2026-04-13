@@ -90,6 +90,8 @@ const details: Record<string, { dates: string; bullets: Bullet[]; description: s
       'Worked on Mercado Crédito and Mercado Pago',
       'Built solutions for financial inclusion across LatAm',
       'Designed credit access for users outside the banking system',
+      { text: 'Mercado Crédito: from MVP to Full-Scale Product', url: 'https://shuga.medium.com/case-of-study-creating-a-better-experience-consumer-credits-mercado-libre-eb20f025e64c' },
+      { text: 'Mercado Crédito: Increase conversion rates', url: 'https://shuga.medium.com/case-of-study-increase-conversion-rates-consumer-credits-mercado-libre-976d07d0ef78' },
     ],
     description:
       "MercadoLibre at scale is a different kind of design challenge. The goal wasn't beautiful interfaces — it was getting credit to people who had never had a bank account.",
