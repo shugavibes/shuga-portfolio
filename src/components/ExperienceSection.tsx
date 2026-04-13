@@ -44,6 +44,7 @@ const details: Record<string, { dates: string; bullets: string[]; description: s
       'Owned UX for the ARS wallet and payment flows',
       'Contributed to new investment product development',
     ],
+    images: ['/images/lemon-app.png'],
     description:
       'In Argentina, the stakes for financial products are real. Designing a crypto wallet when inflation is running at 70%+ is not an abstract exercise.',
   },
