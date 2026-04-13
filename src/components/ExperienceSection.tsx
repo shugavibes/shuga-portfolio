@@ -33,7 +33,7 @@ const details: Record<string, { dates: string; bullets: string[]; description: s
       'Atlas was acquired for its Cards product — the entire team joined Remote',
       'Previously Product Designer: built and scaled the benefits & perks marketplace',
     ],
-    images: ['/images/atlas-cardsweb.png', '/images/atlas-cardsphone.png'],
+    images: ['/images/atlas-cardsweb.png', '/images/atlas-cardsapp.png'],
     description:
       'Nearly 3 years at Atlas — from Product Designer to Head of Product. The card-led pivot led to the acquisition by Remote, with the full team and product carrying over.',
   },
