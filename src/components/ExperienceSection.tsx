@@ -13,7 +13,7 @@ const companyUrls: Record<string, string> = {
   'Mercado Libre & Mercado Pago': 'https://www.mercadolibre.com',
 };
 
-const details: Record<string, { dates: string; bullets: string[]; description: string; images?: string[] }> = {
+const details: Record<string, { dates: string; bullets: string[]; description: string; images?: string[]; videoUrl?: string }> = {
   'Remote': {
     dates: 'Jan 2026 – present',
     bullets: [
@@ -58,6 +58,7 @@ const details: Record<string, { dates: string; bullets: string[]; description: s
     ],
     description:
       'Rebuilding the full product suite while also building the team. The generative AI exploration felt early and uncertain at the time — turns out it was just early.',
+    videoUrl: 'https://www.youtube.com/watch?v=rK2ZOZEvH2o&t=31s',
   },
   'Digital House (ex Acamica)': {
     dates: 'Aug 2019 – Nov 2020',
@@ -245,6 +246,31 @@ export function ExperienceSection() {
                         ))}
                       </div>
                     )}
+
+                    {detail.videoUrl && (() => {
+                      const videoId = detail.videoUrl.match(/v=([^&]+)/)?.[1];
+                      return videoId ? (
+                        <a
+                          href={detail.videoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block relative rounded-2xl overflow-hidden group mt-4"
+                        >
+                          <img
+                            src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+                            alt="Video thumbnail"
+                            className="w-full object-cover"
+                          />
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                            <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <polygon points="9,7 19,12 9,17" fill="#111" />
+                              </svg>
+                            </div>
+                          </div>
+                        </a>
+                      ) : null;
+                    })()}
                   </motion.div>
                 )}
               </AnimatePresence>
