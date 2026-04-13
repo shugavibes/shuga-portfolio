@@ -55,6 +55,7 @@ const details: Record<string, { dates: string; bullets: string[]; description: s
       'Built the company Design System from scratch',
       'Scaled and structured the Design Team',
       'Explored generative AI for customer responses before it was mainstream',
+      'CSAT increased by 35% in the first week after implementing the chat window redesigns',
     ],
     description:
       'Rebuilding the full product suite while also building the team. The generative AI exploration felt early and uncertain at the time — turns out it was just early.',
