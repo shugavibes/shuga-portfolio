@@ -88,9 +88,10 @@ const details: Record<string, { dates: string; bullets: Bullet[]; description: s
   'Mercado Libre & Mercado Pago': {
     dates: 'Jan 2016 – Aug 2018',
     bullets: [
-      'Worked on Mercado Crédito and Mercado Pago',
-      'Built solutions for financial inclusion across LatAm',
-      'Designed credit access for users outside the banking system',
+      'Worked on Mercado Crédito and Mercado Pago.',
+      'Built solutions for financial inclusion across LatAm.',
+      'First designer on the Mercado Crédito team, shaping the experience of providing access to credit for thousands of people who didn\'t have it outside the platform.',
+      'Worked as a Product Designer on Merchant Credits and Consumer Credits, from MVP to scaling the product through growth strategies and continuous improvements.',
       { text: 'Mercado Crédito: from MVP to Full-Scale Product', url: 'https://shuga.medium.com/case-of-study-creating-a-better-experience-consumer-credits-mercado-libre-eb20f025e64c' },
       { text: 'Mercado Crédito: Increase conversion rates', url: 'https://shuga.medium.com/case-of-study-increase-conversion-rates-consumer-credits-mercado-libre-976d07d0ef78' },
     ],
