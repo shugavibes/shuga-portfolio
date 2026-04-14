@@ -43,7 +43,7 @@ const details: Record<string, { dates: string; bullets: Bullet[]; description: s
     bullets: [
       'Designed FIAT/Crypto bridging experiences for the Argentine market',
       'Owned UX for the ARS wallet and payment flows',
-      'Contributed to new investment product development',
+      'I was in charge of designing the product experience and strategy that bridged the fiat and crypto worlds in Argentina. I worked on features for the ARS wallet and developed the money market investment product, enabling users to invest pesos and earn bitcoin on a daily basis.',
     ],
     images: ['/images/lemon-app.png'],
     description:
