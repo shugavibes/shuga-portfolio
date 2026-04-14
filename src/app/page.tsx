@@ -109,7 +109,7 @@ export default function Home() {
       <div className="max-w-2xl mx-auto px-8">
         {/* Hero Section */}
         <section className="mb-12">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-6">
               <div className="w-16 h-16 relative rounded-full overflow-hidden flex-shrink-0">
                 <Image
