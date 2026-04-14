@@ -77,9 +77,9 @@ const details: Record<string, { dates: string; bullets: Bullet[]; description: s
   'Naranja': {
     dates: 'Mar 2018 – Jul 2019',
     bullets: [
-      'Product Designer for the Payments unit',
-      'Researched Argentine user profiles and their payment contexts',
-      'Contributed to an omnichannel digital payments strategy',
+      'Researched Argentinian user profiles across the country, their needs, and contexts around credit card usage and financial behaviors.',
+      'These insights and tests enabled us to design new card payment flows that increased online channel usage and reduced delinquency from incomplete payments.',
+      'Worked on features to migrate clients from Naranja\'s offline channels to new digital payment tools, helping build an omnichannel strategy with consistent offers and experiences for customers.',
       { text: 'Naranja Credit Card: Partial Payments', url: 'https://shuga.medium.com/case-study-partial-payments-naranja-7b2b928ec854' },
     ],
     description:
