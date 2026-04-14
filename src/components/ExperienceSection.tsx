@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const companyUrls: Record<string, string> = {
@@ -111,14 +111,113 @@ const experiences = [
   { company: 'Mercado Libre & Mercado Pago', role: 'Product Designer', period: '2016–2018' },
 ];
 
+function DetailContent({ selected, detail, setLightbox }: { selected: string; detail: NonNullable<ReturnType<typeof getDetail>>; setLightbox: (src: string) => void }) {
+  return (
+    <motion.div
+      key={selected}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.15 }}
+    >
+      <div className="flex items-start justify-between mb-1">
+        <h2 className="text-2xl text-gray-900">{selected}</h2>
+        <a
+          href={companyUrls[selected]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-300 hover:text-gray-500 transition-colors ml-4 mt-1 flex-shrink-0"
+          aria-label={`Visit ${selected}`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+          </svg>
+        </a>
+      </div>
+      <p className="text-gray-400 text-base mb-6">{detail.dates}</p>
+
+      <ul className="space-y-3 mb-8">
+        {detail.bullets.map((b, i) => (
+          <li key={i} className="flex gap-3 text-gray-600 text-base leading-relaxed">
+            <span className="text-gray-300 mt-1 flex-shrink-0">—</span>
+            {typeof b === 'string' ? b : (
+              <a href={b.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 underline underline-offset-2">
+                {b.text}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <p className="text-gray-400 text-base italic leading-relaxed border-t border-gray-100 pt-6 mb-8">
+        {detail.description}
+      </p>
+
+      {detail.images && (
+        <div className="flex flex-col gap-4">
+          {detail.images.map((src, i) => (
+            <div
+              key={i}
+              className="rounded-2xl overflow-hidden bg-gray-50 cursor-zoom-in"
+              onClick={() => setLightbox(src)}
+            >
+              <img src={src} alt="" className="w-full object-cover" />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {detail.videoUrl && (() => {
+        const videoId = detail.videoUrl.match(/v=([^&]+)/)?.[1];
+        return videoId ? (
+          <a
+            href={detail.videoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block relative rounded-2xl overflow-hidden group mt-4"
+          >
+            <img
+              src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+              alt="Video thumbnail"
+              className="w-full object-cover"
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+              <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <polygon points="9,7 19,12 9,17" fill="#111" />
+                </svg>
+              </div>
+            </div>
+          </a>
+        ) : null;
+      })()}
+    </motion.div>
+  );
+}
+
+function getDetail(selected: string | null) {
+  return selected ? details[selected] : null;
+}
+
 export function ExperienceSection() {
   const [selected, setSelected] = useState<string | null>(null);
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   const toggle = (company: string) =>
     setSelected((prev) => (prev === company ? null : company));
 
-  const detail = selected ? details[selected] : null;
+  const detail = getDetail(selected);
 
   return (
     <>
@@ -145,6 +244,67 @@ export function ExperienceSection() {
         </motion.div>
       )}
     </AnimatePresence>
+
+    {/* Mobile layout */}
+    {isMobile && (
+      <div className="w-full">
+        <AnimatePresence mode="wait">
+          {!selected ? (
+            <motion.div
+              key="list"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="border-b border-gray-100"
+            >
+              {experiences.map((exp, index) => (
+                <button
+                  key={exp.company}
+                  onClick={() => toggle(exp.company)}
+                  className={`w-full text-left group block py-6 px-6 ${index === 0 ? 'border-t border-gray-100' : ''} transition-all hover:bg-blue-50 hover:rounded-3xl`}
+                >
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="text-xl mb-1 group-hover:text-gray-900">{exp.company}</h3>
+                      <p className="text-lg text-gray-500 group-hover:text-gray-600">{exp.role}</p>
+                    </div>
+                    <span className="text-gray-400 text-base ml-4 flex-shrink-0">{exp.period}</span>
+                  </div>
+                </button>
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              key="detail"
+              initial={{ opacity: 0, x: 16 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 16 }}
+              transition={{ duration: 0.25 }}
+              className="px-6 pt-4 pb-24"
+            >
+              <button
+                onClick={() => setSelected(null)}
+                className="flex items-center gap-2 text-gray-400 hover:text-gray-600 mb-6 transition-colors"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+                <span className="text-base">Back</span>
+              </button>
+              {detail && (
+                <AnimatePresence mode="wait">
+                  <DetailContent key={selected} selected={selected} detail={detail} setLightbox={setLightbox} />
+                </AnimatePresence>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    )}
+
+    {/* Desktop layout */}
+    {!isMobile && (
     <div
       className="max-w-2xl mx-auto"
       style={{
@@ -201,88 +361,7 @@ export function ExperienceSection() {
             >
               <AnimatePresence mode="wait">
                 {detail && (
-                  <motion.div
-                    key={selected}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    <div className="flex items-start justify-between mb-1">
-                      <h2 className="text-2xl text-gray-900">{selected}</h2>
-                      <a
-                        href={companyUrls[selected]}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-300 hover:text-gray-500 transition-colors ml-4 mt-1 flex-shrink-0"
-                        aria-label={`Visit ${selected}`}
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                          <polyline points="15 3 21 3 21 9" />
-                          <line x1="10" y1="14" x2="21" y2="3" />
-                        </svg>
-                      </a>
-                    </div>
-                    <p className="text-gray-400 text-base mb-6">{detail.dates}</p>
-
-                    <ul className="space-y-3 mb-8">
-                      {detail.bullets.map((b, i) => (
-                        <li key={i} className="flex gap-3 text-gray-600 text-base leading-relaxed">
-                          <span className="text-gray-300 mt-1 flex-shrink-0">—</span>
-                          {typeof b === 'string' ? b : (
-                            <a href={b.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 underline underline-offset-2">
-                              {b.text}
-                            </a>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <p className="text-gray-400 text-base italic leading-relaxed border-t border-gray-100 pt-6 mb-8">
-                      {detail.description}
-                    </p>
-
-                    {detail.images && (
-                      <div className="flex flex-col gap-4">
-                        {detail.images.map((src, i) => (
-                          <div
-                            key={i}
-                            className="rounded-2xl overflow-hidden bg-gray-50 cursor-zoom-in"
-                            onClick={() => setLightbox(src)}
-                          >
-                            <img src={src} alt="" className="w-full object-cover" />
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {detail.videoUrl && (() => {
-                      const videoId = detail.videoUrl.match(/v=([^&]+)/)?.[1];
-                      return videoId ? (
-                        <a
-                          href={detail.videoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block relative rounded-2xl overflow-hidden group mt-4"
-                        >
-                          <img
-                            src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
-                            alt="Video thumbnail"
-                            className="w-full object-cover"
-                          />
-                          <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-                            <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
-                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <polygon points="9,7 19,12 9,17" fill="#111" />
-                              </svg>
-                            </div>
-                          </div>
-                        </a>
-                      ) : null;
-                    })()}
-                  </motion.div>
+                  <DetailContent key={selected} selected={selected} detail={detail} setLightbox={setLightbox} />
                 )}
               </AnimatePresence>
             </motion.div>
@@ -290,6 +369,7 @@ export function ExperienceSection() {
         </AnimatePresence>
       </div>
     </div>
+    )}
     </>
   );
 }
