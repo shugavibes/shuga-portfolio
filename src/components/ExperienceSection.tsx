@@ -174,14 +174,14 @@ export function ExperienceSection() {
                     <p className={`text-lg ${isSelected ? 'text-gray-600' : 'text-gray-500 group-hover:text-gray-600'}`}>
                       {exp.role}
                     </p>
-                    {exp.company === 'Atlas (acq. by Remote)' && (
+                    {!selected && exp.company === 'Atlas (acq. by Remote)' && (
                       <p className="text-gray-400 text-base italic">Previously: Product Designer & Manager</p>
                     )}
-                    {exp.company === 'Remote' && (
+                    {!selected && exp.company === 'Remote' && (
                       <p className="text-gray-400 text-base italic">Joined via Atlas acquisition</p>
                     )}
                   </div>
-                  <span className="text-gray-400 text-base">{exp.period}</span>
+                  {!selected && <span className="text-gray-400 text-base">{exp.period}</span>}
                 </div>
               </button>
             );
