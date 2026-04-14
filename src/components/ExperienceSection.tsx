@@ -41,9 +41,9 @@ const details: Record<string, { dates: string; bullets: Bullet[]; description: s
   'Lemon': {
     dates: 'Feb 2022 – Nov 2022',
     bullets: [
+      'I was in charge of designing the product experience and strategy that bridged the fiat and crypto worlds in Argentina. I worked on features for the ARS wallet and developed the money market investment product, enabling users to invest pesos and earn bitcoin on a daily basis.',
       'Designed FIAT/Crypto bridging experiences for the Argentine market',
       'Owned UX for the ARS wallet and payment flows',
-      'I was in charge of designing the product experience and strategy that bridged the fiat and crypto worlds in Argentina. I worked on features for the ARS wallet and developed the money market investment product, enabling users to invest pesos and earn bitcoin on a daily basis.',
     ],
     images: ['/images/lemon-app.png'],
     description:
