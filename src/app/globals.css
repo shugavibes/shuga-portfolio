@@ -7,6 +7,11 @@
   --background-rgb: 255, 255, 255;
 }
 
+.pixel-cursor-active *,
+.pixel-cursor-active {
+  cursor: none !important;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));

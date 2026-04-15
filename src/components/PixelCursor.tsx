@@ -34,8 +34,6 @@ export function PixelCursor() {
   });
   const rafRef = useRef(0);
 
-  const overLinkRef = useRef(false);
-
   useEffect(() => {
     // Don't show on touch devices
     if (window.matchMedia('(pointer: coarse)').matches) return;
@@ -53,15 +51,10 @@ export function PixelCursor() {
     const onMove = (e: MouseEvent) => {
       stateRef.current.x = e.clientX;
       stateRef.current.y = e.clientY;
-      const isInteractive = !!(e.target as HTMLElement).closest('a, button, [role="button"], input, select, textarea, label');
-      overLinkRef.current = isInteractive;
-      document.documentElement.style.cursor = isInteractive ? 'pointer' : 'none';
-      if (!isInteractive) {
-        stateRef.current.trail.push({ x: e.clientX, y: e.clientY, a: 1 });
-      }
+      stateRef.current.trail.push({ x: e.clientX, y: e.clientY, a: 1 });
     };
     window.addEventListener('mousemove', onMove);
-    document.documentElement.style.cursor = 'none';
+    document.documentElement.classList.add('pixel-cursor-active');
 
     const drawCursor = (x: number, y: number) => {
       for (let row = 0; row < CURSOR.length; row++) {
@@ -94,7 +87,7 @@ export function PixelCursor() {
         );
       }
 
-      if (!overLinkRef.current) drawCursor(s.x, s.y);
+      drawCursor(s.x, s.y);
       rafRef.current = requestAnimationFrame(render);
     };
 
@@ -104,7 +97,7 @@ export function PixelCursor() {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', onMove);
-      document.documentElement.style.cursor = '';
+      document.documentElement.classList.remove('pixel-cursor-active');
     };
   }, []);
 
