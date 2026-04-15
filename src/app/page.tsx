@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { PS2LaunchButton } from '@/components/PS2LaunchButton';
 import { ExperienceSection } from '@/components/ExperienceSection';
+import { PixelCursor } from '@/components/PixelCursor';
 
 const PortfolioItem = ({
   title,
@@ -301,6 +302,7 @@ export default function Home() {
       </div>
       {/* Floating PS2 portfolio button */}
       <PS2LaunchButton />
+      <PixelCursor />
     </main>
   );
 } 
