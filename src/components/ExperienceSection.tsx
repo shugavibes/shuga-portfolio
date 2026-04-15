@@ -29,7 +29,8 @@ const details: Record<string, { dates: string; bullets: Bullet[]; description: s
     dates: 'Apr 2023 – Feb 2026',
     bullets: [
       "Led the company's transition to a product-driven organization centered around the corporate card",
-      'Led cross-functional teams across Engineering, Sales, and CX',
+      'Led cross-functional teams across Engineering, Sales, and CX for the Card product.',
+      'Led the launch of the Card product in just 4 months',
       'Hands-on with product design and vibe coding throughout',
       'Atlas was acquired for its Cards product — the entire team joined Remote',
       'Previously Product Designer: built and scaled the benefits & perks marketplace',
